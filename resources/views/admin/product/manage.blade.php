@@ -1,15 +1,13 @@
 @extends('admin.layouts.layout')
 
-
 @section('admin_page_title')    
 
-Dashboard-Admin Panel
+Manage product-Admin Panel
 @endsection
-
 
 @section('content')
 
-<h1>Admin dashboard</h1>
+<h1>manage product page </h1>
 
 
 @endsection

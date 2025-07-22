@@ -1,15 +1,13 @@
 @extends('admin.layouts.layout')
 
-
 @section('admin_page_title')    
 
-Dashboard-Admin Panel
+Manage payment -Admin Panel
 @endsection
-
 
 @section('content')
 
-<h1>Admin dashboard</h1>
+<h1>manage payment page </h1>
 
 
 @endsection

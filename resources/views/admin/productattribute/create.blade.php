@@ -3,13 +3,12 @@
 
 @section('admin_page_title')    
 
-Dashboard-Admin Panel
+create product attribute-Admin Panel
 @endsection
-
 
 @section('content')
 
-<h1>Admin dashboard</h1>
+<h1>create product attribute page </h1>
 
 
 @endsection

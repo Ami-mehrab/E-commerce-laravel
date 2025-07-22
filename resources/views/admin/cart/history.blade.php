@@ -1,15 +1,12 @@
 @extends('admin.layouts.layout')
-
-
 @section('admin_page_title')    
 
-Dashboard-Admin Panel
+Cart history -Admin Panel
 @endsection
-
 
 @section('content')
 
-<h1>Admin dashboard</h1>
+<h1> cart history page </h1>
 
 
 @endsection

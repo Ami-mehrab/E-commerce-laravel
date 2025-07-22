@@ -1,15 +1,12 @@
 @extends('admin.layouts.layout')
-
-
 @section('admin_page_title')    
 
-Dashboard-Admin Panel
+Manage Discount -Admin Panel
 @endsection
-
 
 @section('content')
 
-<h1>Admin dashboard</h1>
+<h1>manage discount page </h1>
 
 
 @endsection

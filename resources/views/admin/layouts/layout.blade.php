@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-    <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-    <title>Blank Page | AdminKit Demo</title>
+	<title> @yield('admin_page_title')</title>
 
-    <link href="{{ asset('admin_assets/css/app.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="{{ asset('admin_assets/css/app.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,93 +25,116 @@
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
-        </a>
+					<span class="align-middle">AdminKit</span>
+				</a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="index.html">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('admin') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin') }}">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
-            </a>
+					<li class="sidebar-header">Category</li>
+
+					<li class="sidebar-item {{ request()->routeIs('category.create') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('category.create') }}">
+							<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('category.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('category.manage') }}">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
+					<li class="sidebar-header">Sub Category</li>
+
+					<li class="sidebar-item {{ request()->routeIs('subcategory.create') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('subcategory.create') }}">
+							<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('subcategory.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('subcategory.manage') }}">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+						</a>
 					</li>
 
-					<li class="sidebar-header">
-						Tools & Components
+					<li class="sidebar-header">Attribute</li>
+
+					<li class="sidebar-item {{ request()->routeIs('productattribute.create') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('productattribute.create') }}">
+							<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('productattribute.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('productattribute.manage') }}">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
-            </a>
+					<li class="sidebar-header">Discount</li>
+
+					<li class="sidebar-item {{ request()->routeIs('productdiscount.create') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('productdiscount.create') }}">
+							<i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('productdiscount.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('productdiscount.manage') }}">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
+						</a>
+					</li>
+					
+					
+					<li class="sidebar-header">Product</li>
+
+					<li class="sidebar-item {{ request()->routeIs('product.review.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('product.review.manage') }}">
+							<i class="align-middle" data-feather="star"></i> <span class="align-middle">Review</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('product.manage') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('product.manage') }}">
+							<i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Manage Product</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
+					
+					<li class="sidebar-header">History</li>
+
+					<li class="sidebar-item {{ request()->routeIs('admin.cart.history') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.cart.history') }}">
+							<i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Cart</span>
+						</a>
 					</li>
 
-					<li class="sidebar-header">
-						Plugins & Addons
+					<li class="sidebar-item {{ request()->routeIs('admin.order.history') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{ route('admin.order.history') }}">
+							<i class="align-middle" data-feather="list"></i> <span class="align-middle">Order</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
-            </a>
+					<li class="sidebar-item {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+						<a class="sidebar-link" href="{{Route('admin.settings')}}">
+							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
+						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
-            </a>
-					</li>
+			
+
+			
+
 				</ul>
 
 				<div class="sidebar-cta">
@@ -132,8 +154,8 @@
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+					<i class="hamburger align-self-center"></i>
+				</a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -271,12 +293,12 @@
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-                <i class="align-middle" data-feather="settings"></i>
-              </a>
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
-              </a>
+								<img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
@@ -294,9 +316,9 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Blank Page</h1>
 
-                    @yield('content')
+
+					@yield('content')
 
 					<div class="row">
 						<div class="col-12">
@@ -318,7 +340,7 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy;
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a> &copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
