@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\SellerMainController;
+use App\Http\Controllers\Seller\SellerProductController;
+use App\Http\Controllers\Seller\SellerStoreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,7 +26,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
-        
+
 
         Route::controller(AdminmainController::class)->group(function () {
 
@@ -75,12 +78,39 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
     });
 });
 
+//route for seller
+
+Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function () {
+
+    Route::prefix('vendor')->group(function () {
+
+
+        Route::controller(SellerMainController::class)->group(function () {
+
+            Route::get('/dashboard', 'index')->name('vendor');
+             Route::get('/orderhistory', 'orderhistory')->name('vendor.orderhistory');
+      
+        });
+
+          Route::controller(SellerProductController::class)->group(function () {
+
+            Route::get('/productcreate', 'index')->name('vendor.product');
+            Route::get('/productmanage', 'manage')->name('vendor.product.manage');
+      
+        }); 
+
+          Route::controller(SellerStoreController::class)->group(function () {
+
+            Route::get('/store', 'index')->name('vendor.store');
+            Route::get('/store/manage', 'manage')->name('vendor.store.manage');
+      
+        });
+    });
+});
 
 
 
-Route::get('vendor/dashboard', function () {
-    return view('vendor');
-})->middleware(['auth', 'verified', 'rolemanager:vendor'])->name('vendor');
+
 
 
 Route::middleware('auth')->group(function () {
