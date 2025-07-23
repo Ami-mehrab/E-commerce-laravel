@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductDiscountController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Customer\CustomerMainController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerMainController;
 use App\Http\Controllers\Seller\SellerProductController;
@@ -18,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'rolemanager:customer'])->name('dashboard');
+})->middleware(['auth', 'verified','rolemanager:customer'])->name('dashboard');
+
 
 
 //route for admin 
@@ -88,26 +90,41 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
         Route::controller(SellerMainController::class)->group(function () {
 
             Route::get('/dashboard', 'index')->name('vendor');
-             Route::get('/orderhistory', 'orderhistory')->name('vendor.orderhistory');
-      
+            Route::get('/orderhistory', 'orderhistory')->name('vendor.orderhistory');
         });
 
-          Route::controller(SellerProductController::class)->group(function () {
+        Route::controller(SellerProductController::class)->group(function () {
 
             Route::get('/productcreate', 'index')->name('vendor.product');
             Route::get('/productmanage', 'manage')->name('vendor.product.manage');
-      
-        }); 
+        });
 
-          Route::controller(SellerStoreController::class)->group(function () {
+        Route::controller(SellerStoreController::class)->group(function () {
 
             Route::get('/store', 'index')->name('vendor.store');
             Route::get('/store/manage', 'manage')->name('vendor.store.manage');
-      
         });
     });
 });
 
+
+//route for customer
+
+Route::middleware(['auth', 'verified', 'rolemanager:customer'])->group(function () {
+
+
+    Route::prefix('user')->group(function () {
+
+
+        Route::controller(CustomerMainController::class)->group(function () {
+
+            Route::get('/dashboard', 'index')->name('dashboard');
+             Route::get('/history', 'history')->name('customer.history');
+              Route::get('/payment', 'payment')->name('customer.payment');
+               Route::get('/affiliate', 'affiliate')->name('customer.affiliate');
+        });
+    });
+});
 
 
 
